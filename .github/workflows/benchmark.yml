@@ -1,0 +1,29 @@
+name: Benchmark
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install -r requirements.txt
+
+    - name: Run benchmark tests
+      run: |
+        python3 -m pytest --benchmark-only --benchmark-save=benchmark_run
