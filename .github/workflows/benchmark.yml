@@ -45,3 +45,12 @@ jobs:
       uses: ./ecops-action
       with:
         method: end_measurement
+
+    - name: Upload EcOps artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: ecops-artifacts
+        path: |
+          ecops-summary.md
+            ecops-result.json
