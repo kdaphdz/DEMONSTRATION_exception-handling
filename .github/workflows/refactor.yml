@@ -19,4 +19,4 @@ jobs:
         with:
           method: refactor
           args: |
-            https://github.com/tu-org/tu-repo.git main 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 .github/workflows/benchmark.yml
+            https://github.com/kdaphdz/exception-handling.git main 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 .github/workflows/benchmark.yml
