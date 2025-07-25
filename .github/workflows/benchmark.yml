@@ -24,6 +24,17 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Start EcOps Measurement
+      uses: ./ecops-action
+      with:
+        method: start_measurement
+        args: perf power/energy-cores/ power/energy-pkg/ 50
+
     - name: Run benchmark tests
       run: |
         pytest --benchmark-only --benchmark-save=benchmark_run
+
+    - name: End EcOps Measurement
+      uses: ./ecops-action
+      with:
+        method: end_measurement
