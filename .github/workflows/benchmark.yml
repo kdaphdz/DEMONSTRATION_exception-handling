@@ -51,6 +51,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ecops-artifacts
-        path: |
-          ecops-summary.md
-            ecops-result.json
+        path: ecops-result.json
