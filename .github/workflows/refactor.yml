@@ -1,0 +1,22 @@
+name: Run EcOps Refactor
+
+on:
+  workflow_dispatch:
+
+jobs:
+  refactor_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout EcOps action
+        uses: actions/checkout@v4
+        with:
+          repository: CarlosPHN/EcOps
+          token: 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
+          path: ecops-action
+
+      - name: Run EcOps Refactor Action
+        uses: ./ecops-action
+        with:
+          method: refactor
+          args: |
+            https://github.com/tu-org/tu-repo.git main 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 .github/workflows/benchmark.yml
