@@ -3,8 +3,7 @@ name: Benchmark
 on:
   push:
     branches:
-      - main
-  pull_request:
+    - refactor/auto-70cb819d
 
 jobs:
   benchmark:
@@ -52,3 +51,20 @@ jobs:
       with:
         name: ecops-artifacts
         path: ecops-json-content.json
+  compare_job:
+    needs:
+    - benchmark
+    runs-on: self-hosted
+    steps:
+    - name: Checkout EcOps action
+      uses: actions/checkout@v4
+      with:
+        repository: CarlosPHN/EcOps
+        token: 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
+        path: ecops-action
+    - name: Run EcOps Compare Action
+      uses: ./ecops-action
+      with:
+        method: compare
+        args: kdaphdz/exception-handling main refactor/auto-70cb819d 
+          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
